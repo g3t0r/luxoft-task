@@ -24,7 +24,8 @@ public class FileToRecordsConverterTests {
         Set<Record> records = fileToRecordsConverter.convertFileToRecords(multipartFile);
 
         // Then
-        Assertions.assertEquals(2, records.size());
+        Assertions.assertEquals(1, records.size());
+        Assertions.assertEquals(new Record("asdf", "asdf", "asdf", "01-02-2001 01:23:34"), records.toArray()[0]);
     }
 
     @Test

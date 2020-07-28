@@ -18,7 +18,8 @@ import java.util.stream.Collectors;
 public class FileToRecordsConverter {
 
 
-    private final String REGEX = "^((([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+))$";
+//    private final String REGEX = "^((([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+))$";
+    private final String REGEX = "^((([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([A-Z]|[a-z]|[0-9])+),(([0-9])+-([0-9])+-([0-9])+ ([0-9])+:([0-9])+:([0-9])+))$";
 
     public Set<Record> convertFileToRecords(MultipartFile file) throws IOException, IncorrectDataFormatException {
 

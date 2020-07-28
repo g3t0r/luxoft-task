@@ -3,6 +3,7 @@ package com.janjakubowski.technical_task;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 public class Record {
@@ -62,5 +63,21 @@ public class Record {
                 ", description='" + description + '\'' +
                 ", updatedTimestamp=" + updatedTimestamp +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return primaryKey.equals(record.primaryKey) &&
+                name.equals(record.name) &&
+                description.equals(record.description) &&
+                updatedTimestamp.equals(record.updatedTimestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(primaryKey, name, description, updatedTimestamp);
     }
 }
