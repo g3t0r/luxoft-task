@@ -24,20 +24,33 @@ public class FileToRecordsConverterTests {
         Set<Record> records = fileToRecordsConverter.convertFileToRecords(multipartFile);
 
         // Then
-        Assertions.assertEquals(1, records.size());
-        Assertions.assertEquals(new Record("asdf", "asdf", "asdf", "01-02-2001 01:23:34"), records.toArray()[0]);
+        Assertions.assertEquals(3, records.size());
+//        Assertions.assertEquals(new Record("asdf", "asdf", "asdf", "01-02-2001 01:23:34"), records.toArray()[0]);
     }
 
     @Test
     void fileDoesNotMatchRegex() throws Exception {
 
         // Given
-        FileInputStream fileInputStream = new FileInputStream("src/test/resources/test-file-incorrect.txt");
+        FileInputStream fileInputStream = new FileInputStream("src/test/resources/test-file-incorrect-regex.txt");
         MultipartFile multipartFile = new MockMultipartFile("nazwa.txt", fileInputStream);
         FileToRecordsConverter fileToRecordsConverter = new FileToRecordsConverter();
 
         // When - Then
         Assertions.assertThrows(IncorrectDataFormatException.class, () -> {
+            fileToRecordsConverter.convertFileToRecords(multipartFile);
+        });
+    }
+
+    @Test
+    void incorrectDateFormat() throws Exception {
+        // Given
+        FileInputStream fileInputStream = new FileInputStream("src/test/resources/test-file-incorrect-date.txt");
+        MultipartFile multipartFile = new MockMultipartFile("nazwa.txt", fileInputStream);
+        FileToRecordsConverter fileToRecordsConverter = new FileToRecordsConverter();
+
+        // When - Then
+        Assertions.assertThrows(RuntimeException.class, () -> {
             fileToRecordsConverter.convertFileToRecords(multipartFile);
         });
     }

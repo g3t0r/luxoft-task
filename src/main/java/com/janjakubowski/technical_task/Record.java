@@ -12,9 +12,9 @@ public class Record {
     private String primaryKey;
     private String name;
     private String description;
-    private String updatedTimestamp;
+    private Timestamp updatedTimestamp;
 
-    public Record(String primaryKey, String name, String description, String updatedTimestamp) {
+    public Record(String primaryKey, String name, String description, Timestamp updatedTimestamp) {
         this.primaryKey = primaryKey;
         this.name = name;
         this.description = description;
@@ -47,11 +47,11 @@ public class Record {
         this.description = description;
     }
 
-    public String getUpdatedTimestamp() {
+    public Timestamp getUpdatedTimestamp() {
         return updatedTimestamp;
     }
 
-    public void setUpdatedTimestamp(String updatedTimestamp) {
+    public void setUpdatedTimestamp(Timestamp updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
     }
 
@@ -61,7 +61,7 @@ public class Record {
                 "primaryKey='" + primaryKey + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", updatedTimestamp=" + updatedTimestamp +
+                ", updatedTimestamp=" + updatedTimestamp.toString() +
                 '}';
     }
 
