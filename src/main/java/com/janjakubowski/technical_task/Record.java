@@ -21,7 +21,8 @@ public class Record {
         this.updatedTimestamp = updatedTimestamp;
     }
 
-    public Record() {}
+    public Record() {
+    }
 
     public String getPrimaryKey() {
         return primaryKey;

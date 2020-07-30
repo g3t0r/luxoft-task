@@ -1,6 +1,7 @@
 package com.janjakubowski.technical_task;
 
-import com.janjakubowski.technical_task.exceptions.IncorrectDataFormatException;
+import com.janjakubowski.technical_task.exceptions.FileDoesNotMatchRequirementsException;
+import com.janjakubowski.technical_task.exceptions.IncorrectDateFormatException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,7 +38,7 @@ public class FileToRecordsConverterTests {
         FileToRecordsConverter fileToRecordsConverter = new FileToRecordsConverter();
 
         // When - Then
-        Assertions.assertThrows(IncorrectDataFormatException.class, () -> {
+        Assertions.assertThrows(FileDoesNotMatchRequirementsException.class, () -> {
             fileToRecordsConverter.convertFileToRecords(multipartFile);
         });
     }
@@ -50,7 +51,7 @@ public class FileToRecordsConverterTests {
         FileToRecordsConverter fileToRecordsConverter = new FileToRecordsConverter();
 
         // When - Then
-        Assertions.assertThrows(RuntimeException.class, () -> {
+        Assertions.assertThrows(IncorrectDateFormatException.class, () -> {
             fileToRecordsConverter.convertFileToRecords(multipartFile);
         });
     }

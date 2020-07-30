@@ -32,12 +32,12 @@ public class RecordService {
         recordRepository.saveAll(records);
     }
 
-    public Record findRecord(String primaryKey) throws RecordNotFoundException {
+    public Record findRecord(String primaryKey) {
         Optional<Record> record = recordRepository.findById(primaryKey);
         return record.orElseThrow(() -> new RecordNotFoundException(primaryKey));
     }
 
-    public void deleteRecord(String primaryKey) throws RecordNotFoundException {
+    public void deleteRecord(String primaryKey) {
         Optional<Record> record = recordRepository.findById(primaryKey);
         recordRepository.delete(record.orElseThrow(() -> new RecordNotFoundException(primaryKey)));
     }
